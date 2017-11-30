@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee Data Management</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+</head>
+<body>
+<div class="container">
+	<nav class="navbar">
+		<h1>Employee Data Management</h1>
+		<h2>Billable Employee Hours</h2>
+	</nav>
+
+</div>
+<div class="container">
+	<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					Add Employee
+				</h3>
+			</div>
+			<div class="panel-body">
+				<form>
+					<div class="form-group">
+						<label for="search">Employee Name</label>
+						<input name="search" type="text" class="form-control" id="search-term">
+					</div>
+
+					<div class="form-group">
+						<label for="pwd">Role</label>
+						<select class="form-control" id="numRecordsSelect">
+							<option value="1" selected>1</option>
+							<option value="5">5</option>
+							<option value="10">10</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="startYear">Start Date (DD/MM/YY)</label>
+						<input type="text" class="form-control" id="start-year">
+					</div>
+
+					<div class="form-group">
+						<label for="endYear">Monthly Rate</label>
+						<input type="text" class="form-control" id="end-year">
+					</div>
+					
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary" id="executeRun">
+							Submit
+						</button>
+					</div>
+
+
+				</form>
+
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				Current Employees
+			</h3>
+		</div>
+		<div class="panel-body">
+				<table class="table employees-area">
+				<tr>
+				    <th>Employee Name</th>
+				    <th>Role</th> 
+				    <th>Start Date</th>
+				    <th>Months Worked</th>
+				    <th></th>
+				</tr>
+				</table>
+		</div>
+	</div>
+
+</div>
+<script src="https://use.fontawesome.com/129261c3b8.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+</body>
+</html>
