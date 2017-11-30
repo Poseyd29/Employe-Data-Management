@@ -10,25 +10,28 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-// database.ref().on("value", function(snapshot) {
-
-
 //click the button
 $('#add-button').on('click', function(event){
   event.preventDefault();
+
   //find all of the values
   var name =  $('#employee-name').val().trim();
   var role = $('#role').val().trim();
   var start = $('#start-date').val().trim();
   var rate =  $('#monthly-rate').val().trim();
-  console.log(name)
+  
   //push them to firebase
   database.ref().push({
     name: name,
     role: role,
     start: start,
-    rate: rate
+    rate: rate,
+    dateAdded: firebase.ServerValue.TIMESTAMP
   });
+});
+
+database.ref().on("child_added", function(childSnapshot) {
+  $('.table').append('<tr><td>' + childSnapshot.val().name + '</td><td>' + childSnapshot.val().role + '</td><td>' + childSnapshot.val().date + '</td><td></td><td>' + childSnapshot.val().rate + '</tr><tr></tr>');
 });
 
 //append row to table
