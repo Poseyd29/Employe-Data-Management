@@ -17,38 +17,32 @@
 <div class="container">
 	<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">
-					Add Employee
-				</h3>
+				<h3 class="panel-title">Add Employee</h3>
 			</div>
 			<div class="panel-body">
 				<form>
 					<div class="form-group">
-						<label for="search">Employee Name</label>
-						<input name="search" type="text" class="form-control" id="search-term">
+						<label for="employee-name">Employee Name</label>
+						<input name="search" type="text" class="form-control" id="employee-name">
 					</div>
 
 					<div class="form-group">
-						<label for="pwd">Role</label>
-						<select class="form-control" id="numRecordsSelect">
-							<option value="1" selected>1</option>
-							<option value="5">5</option>
-							<option value="10">10</option>
-						</select>
+						<label for="role">Role</label>
+							<input name="search" type="text" class="form-control" id="role">
 					</div>
 
 					<div class="form-group">
-						<label for="startYear">Start Date (DD/MM/YY)</label>
-						<input type="text" class="form-control" id="start-year">
+						<label for="startDate">Start Date (DD/MM/YY)</label>
+						<input type="text" class="form-control" id="start-date">
 					</div>
 
 					<div class="form-group">
-						<label for="endYear">Monthly Rate</label>
-						<input type="text" class="form-control" id="end-year">
+						<label for="monthlyRate">Monthly Rate</label>
+						<input type="text" class="form-control" id="mothly-rate">
 					</div>
 					
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary" id="executeRun">
+						<button type="submit" class="btn btn-primary" id="add-button">
 							Submit
 						</button>
 					</div>
@@ -71,7 +65,8 @@
 				    <th>Role</th> 
 				    <th>Start Date</th>
 				    <th>Months Worked</th>
-				    <th></th>
+				    <th>Monthly Rate ($)</th>
+				    <th>Total Billed ($)</th>
 				</tr>
 				</table>
 		</div>
