@@ -26,16 +26,10 @@ $('#add-button').on('click', function(event){
     role: role,
     start: start,
     rate: rate,
-    dateAdded: firebase.ServerValue.TIMESTAMP
+    // dateAdded: firebase.ServerValue.TIMESTAMP
   });
 });
 
 database.ref().on("child_added", function(childSnapshot) {
-  $('.table').append('<tr><td>' + childSnapshot.val().name + '</td><td>' + childSnapshot.val().role + '</td><td>' + childSnapshot.val().date + '</td><td></td><td>' + childSnapshot.val().rate + '</tr><tr></tr>');
+  $('.table').append('<tr><td>' + childSnapshot.val().name + '</td><td>' + childSnapshot.val().role + '</td><td>' + childSnapshot.val().start + '</td><td></td><td>' + childSnapshot.val().rate + '</tr><tr></tr>');
 });
-
-//append row to table
-
-//loop over the firebase array
-//var something = snapshop.val().objectName;
-//$('').append('<tr><td>' + name + '</td><td>' + role + '</td><td>' + date + '</td><td>' + rate + '</tr>');
