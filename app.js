@@ -17,19 +17,37 @@ $('#add-button').on('click', function(event){
   //find all of the values
   var name =  $('#employee-name').val().trim();
   var role = $('#role').val().trim();
-  var start = $('#start-date').val().trim();
+  var start = $('#start-date').val().trim()
+  //converts the javascript date format into a unix code  
+  var unixStart = moment(start, 'YYYY/MM/DD').format('X');
   var rate =  $('#monthly-rate').val().trim();
   
+  
+
   //push them to firebase
   database.ref().push({
     name: name,
     role: role,
-    start: start,
+    start: unixStart,
     rate: rate,
     // dateAdded: firebase.ServerValue.TIMESTAMP
   });
+
+  //clear fields
+  $('#employee-name').val('');
+  $('#role').val('');
+  $('#start-date').val('');
+  $('#monthly-rate').val('');
+
 });
 
 database.ref().on("child_added", function(childSnapshot) {
-  $('.table').append('<tr><td>' + childSnapshot.val().name + '</td><td>' + childSnapshot.val().role + '</td><td>' + childSnapshot.val().start + '</td><td></td><td>' + childSnapshot.val().rate + '</tr><tr></tr>');
+
+  //takes the unix code date and converts it back to mm/dd/yy
+  var startDateFormat = moment.unix(childSnapshot.val().start).format('MM/DD/YY');
+  //calculates the difference between today and the start date and return the number of months
+  var months = moment().diff(moment.unix(childSnapshot.val().start, 'X'), 'months');
+  var billed = months * childSnapshot.val().rate;
+
+  $('.table').append('<tr><td>' + childSnapshot.val().name + '</td><td>' + childSnapshot.val().role + '</td><td>' + startDateFormat + '</td><td>' + months + '</td><td>' + childSnapshot.val().rate + '</td><td>' + billed + '</td></tr>');
 });
